@@ -1,4 +1,4 @@
-import { Wrapper,HeaderTitleSection, HeaderTitle,HeaderSubTitle } from "./style"
+import { Wrapper,HeaderTitleSection, HeaderTitle } from "./style"
 export const Header=()=>{
     
     return(
@@ -7,9 +7,9 @@ export const Header=()=>{
             <HeaderTitleSection>
                 <HeaderTitle>
                     Sora Union 
-                    <HeaderSubTitle>
+                    <span>
                         -Rockets List
-                    </HeaderSubTitle>
+                    </span>
                 </HeaderTitle>
             </HeaderTitleSection>
         </Wrapper>

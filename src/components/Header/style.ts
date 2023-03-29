@@ -36,7 +36,8 @@ color: ${({ theme }) => theme.text.primary};
 line-height: 100px;
 float: left;
 transition: all 0.3s ease 0s;
-`
-export const HeaderSubTitle=styled.span`
-color: ${({ theme }) => theme.text.secondary};
+
+span{
+    color: ${({ theme }) => theme.text.secondary};
+}
 `

@@ -1,36 +1,28 @@
-
-/* 
----------------------------------------------
-Banner Style
---------------------------------------------- 
-*/
-.main-banner {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  padding: 226px 0px 120px 0px;
-  position: relative;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  line-height: 1.5;
 }
 
-.main-banner:after {
-  content: "";
-  background-image: url(../../public/baner-dec-left.png);
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 0;
-  top: 100px;
-  width: 193px;
-  height: 467px;
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
 }
 
-.main-banner:before {
-  content: "";
-  background-image: url(../../public/baner-dec-right.png);
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0;
-  top: 100px;
-  width: 98px;
-  height: 290px;
+p,
+label {
+  line-height: 1.5em;
 }
+
+input, select, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 

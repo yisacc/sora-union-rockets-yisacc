@@ -1,27 +1,26 @@
-import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
+
 import {Header, Rockets} from '@/components'
+import RootLayout from '@/layout'
+import { PageWrapper } from '@/components/PageWrapper'
+import Head from 'next/head'
 
 
 export default function Home() {
   return (
     <>
-      <Head>
+              <Head>
         <title>Sora Union Rockets</title>
         <meta name="description" content="Sora Union Rockets" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div
-          className='main-banner wow fadeIn'
-          id='top'
-          data-wow-duration='1s'
-          data-wow-delay='0.5s'
+      <RootLayout>
+        <PageWrapper
         >
           <Header />
-        </div>
-
+        </PageWrapper>
+      </RootLayout>
       </main>
     </>
   )
