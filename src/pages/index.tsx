@@ -1,9 +1,9 @@
 
-import { Form, Header, Rockets } from '@/components'
+import { Header, Rockets } from '@/components'
 import RootLayout from '@/layout'
 import { PageWrapper } from '@/components'
 import Head from 'next/head'
-
+import { AddForm } from './components/AddForm'
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <RootLayout>
         <PageWrapper>
           <Header />
-          <Form />
+          <AddForm />
         </PageWrapper>
       </RootLayout>
     </>

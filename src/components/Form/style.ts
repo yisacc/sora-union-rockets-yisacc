@@ -1,44 +1,57 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.bg.secondary};
-  font-size: 100%;
-`
+
 
 export const Card = styled.div`
-  max-width: 1130px;
-  margin: 0 auto;
-  clear: both;
-  padding-top: 0;
-`
-export const CardHeader = styled.div`
+  box-shadow: 0 3px 5px rgba(25, 30, 62, 0.02);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #ecedf2;
+  background-color: #fff;
+  color: #666;
   position: relative;
-  top: -70px;
-  margin: 0 auto;
-  font-size: 13px;
-  width: auto;
+`
+export const CardContent = styled.div`
+  padding: 30px;
+  color: #7e7d8f;
+  padding-top: 20px;
+  overflow: auto;
+  margin-top: 20px;
+`
+export const FormContent = styled.div`
   display: flex;
-  background: #03a4ed;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 `
-export const CardDescription = styled.div`
-  max-width: 1320px;
-`
-export const CardDescriptionText = styled.div`
-  width: 966px;
-  margin: 0 auto;
-  padding-top: 50px;
-  font-size: 80%;
-`
-export const CardDescriptionTextTitle = styled.h1`
-  color: #2a2a2a;
-  text-align: center;
-  font-size: 250%;
+export const FormContentSection = styled.div`
+  width: 100%;
+  margin-right: 50px;
 `
 
-export const CardDescriptionTextDetail = styled.p`
-  color: #2a2a2a;
+export const ButtonContainer = styled.div`
+  margin-top: 20px;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+`
+export const SubmitButton = styled.input`
+  cursor: pointer;
+  color: #fff;
+  background-color: #fe3f40;
+  border-radius: 30px;
+  margin: 0;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  white-space: normal;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 0.84rem 2.14rem;
+  font-size: 0.81rem;
+  display: inline-block;
+  font-weight: 400;
   text-align: center;
-  font-size: 120%;
-  padding: 0;
+  vertical-align: middle;
+  line-height: 1.5;
 `

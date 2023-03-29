@@ -1,34 +1,57 @@
+import { FormLabel } from '../FormLabel'
+import { FormInput } from '../FormInput'
+import { FormTextArea } from '../FormTextArea'
 import {
-  CardHeader,
+  ButtonContainer,
   Card,
-  Wrapper,
-  CardDescription,
-  CardDescriptionText,
-  CardDescriptionTextTitle,
-  CardDescriptionTextDetail,
+  CardContent,
+  FormContent,
+  FormContentSection,
+  SubmitButton,
 } from './style'
-export const Form = () => {
+import { ErrorSpan } from '../ErrorSpan'
+import { FormSelect } from '../FormSelect'
+export const Form: React.FC = () => {
+  const handleSubmit = () => {}
   return (
-    <>
-      <CardDescription>
-        <CardDescriptionText>
-          <CardDescriptionTextTitle>
-            Register at Tutor Ethiopia
-          </CardDescriptionTextTitle>
-          <CardDescriptionTextDetail>
-            If you are a tutor or student looking to make full use of Tutor
-            Ethiopia please fill in the form below. If any student / tutor
-            viewing this site searches for your criteria, we will give them the
-            opportunity to contact you.
-          </CardDescriptionTextDetail>
-        </CardDescriptionText>
-      </CardDescription>
-
-      <Wrapper>
-        <Card>
-          <CardHeader>Add New Rocket</CardHeader>
-        </Card>
-      </Wrapper>
-    </>
+    <Card>
+      <CardContent>
+        <form onSubmit={handleSubmit} id="signupform">
+          <FormContent>
+            <FormContentSection>
+              <FormLabel>Title</FormLabel>
+              <FormInput name="title"></FormInput>
+              <ErrorSpan errorString="" />
+            </FormContentSection>
+            <FormContentSection>
+              <FormLabel>Rocket Name</FormLabel>
+              <FormInput name="rocketName"></FormInput>
+              <ErrorSpan errorString="" />
+            </FormContentSection>
+          </FormContent>
+          <FormContent>
+            <FormContentSection>
+              <FormLabel>Description</FormLabel>
+              <FormTextArea name="description" />
+              <ErrorSpan errorString="" />
+            </FormContentSection>
+          </FormContent>
+          <FormContent>
+            <FormContentSection>
+              <FormLabel>User</FormLabel>
+              <FormSelect name="user" />
+            </FormContentSection>
+            <FormContentSection></FormContentSection>
+          </FormContent>
+          <ButtonContainer>
+            <SubmitButton
+              type="submit"
+              value="Continue"
+              onClick={handleSubmit}
+            />
+          </ButtonContainer>
+        </form>
+      </CardContent>
+    </Card>
   )
 }
