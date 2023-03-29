@@ -5,8 +5,8 @@ const light = {
       inset: "#374359",
     },
     text: {
-      primary: "#212426",
-      secondary: "#4E6172",
+      primary: "#03a4ed",
+      secondary: "#fe3f40",
       highlight: "#0C679F",
       auxiliary: "rgba(78, 97, 114, 0.8);",
       error: "#BD1414",

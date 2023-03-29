@@ -1,11 +1,11 @@
-import Providers from '@/providers'
 import '@/styles/globals.css'
+import { ThemeProvider } from '@/styles/theme/ThemeProvider'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Providers>
+    <ThemeProvider>
       <Component {...pageProps} />
-    </Providers>
+    </ThemeProvider>
   )
 }

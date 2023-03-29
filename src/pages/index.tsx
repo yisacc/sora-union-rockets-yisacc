@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import {Rockets} from '@/components'
+import {Header, Rockets} from '@/components'
 
 
 export default function Home() {
@@ -12,8 +12,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-<Rockets />
+      <main>
+        <div
+          className='main-banner wow fadeIn'
+          id='top'
+          data-wow-duration='1s'
+          data-wow-delay='0.5s'
+        >
+          <Header />
+        </div>
+
       </main>
     </>
   )
