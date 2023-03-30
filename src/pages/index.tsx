@@ -20,7 +20,7 @@ export default function Home() {
       <RootLayout>
         <PageWrapper>
           <Header />
-          {showAddForm?<AddForm />:<Rockets />}
+          {showAddForm === false ? <AddForm /> : <Rockets />}
         </PageWrapper>
       </RootLayout>
     </>
