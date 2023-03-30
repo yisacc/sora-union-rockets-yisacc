@@ -1,11 +1,14 @@
 
-import { Header, Rockets } from '@/components'
+import { Header } from '@/components'
 import RootLayout from '@/layout'
 import { PageWrapper } from '@/components'
 import Head from 'next/head'
 import { AddForm } from './components/AddForm'
+import { useState } from 'react'
+import { Rockets } from './components/Rockets'
 
 export default function Home() {
+  const [showAddForm, setShowAddForm] = useState(false)
   return (
     <>
       <Head>
@@ -17,7 +20,7 @@ export default function Home() {
       <RootLayout>
         <PageWrapper>
           <Header />
-          <AddForm />
+          {showAddForm?<AddForm />:<Rockets />}
         </PageWrapper>
       </RootLayout>
     </>
