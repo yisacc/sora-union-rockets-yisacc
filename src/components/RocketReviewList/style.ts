@@ -15,7 +15,6 @@ export const Container = styled.div`
 `
 export const Card = styled.div`
   display: flex;
-  -webkit-box-align: center;
   margin-bottom: 30px;
   box-shadow: 0 3px 5px rgba(25, 30, 62, 0.02);
   border-radius: 10px;
@@ -59,7 +58,6 @@ export const RocketNameContainer = styled.div`
   font-size: 13px;
   color: #444;
   margin-left: 10px;
-  position: relative;
   top: 2px;
   flex: 1;
   display: flex;
@@ -68,7 +66,6 @@ export const RocketNameContainer = styled.div`
 `
 
 export const UpdateRocket = styled.div`
-  float: right;
   color: #03a4ed;
   font-size: 18px;
   position: relative;

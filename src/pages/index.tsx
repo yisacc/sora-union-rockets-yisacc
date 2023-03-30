@@ -1,11 +1,9 @@
 
 import { Header } from '@/components'
 import RootLayout from '@/layout'
-import { PageWrapper } from '@/components'
+import { PageWrapper, RocketReviewList, RocketReviewForm } from '@/components'
 import Head from 'next/head'
-import { AddForm } from './components/AddForm'
 import { useState } from 'react'
-import { Rockets } from './components/Rockets'
 
 export default function Home() {
   const [showAddForm, setShowAddForm] = useState(false)
@@ -20,7 +18,7 @@ export default function Home() {
       <RootLayout>
         <PageWrapper>
           <Header />
-          {showAddForm === false ? <AddForm /> : <Rockets />}
+          {showAddForm === false ? <RocketReviewForm /> : <RocketReviewList />}
         </PageWrapper>
       </RootLayout>
     </>

@@ -1,16 +1,16 @@
-import { FormLabel } from '../FormLabel'
-import { FormInput } from '../FormInput'
-import { FormTextArea } from '../FormTextArea'
+import FormLabel from '../FormLabel'
+import FormInput from '../FormInput'
+import FormTextArea from '../FormTextArea'
 import {
   ButtonContainer,
   Card,
   CardContent,
   FormContent,
   FormContentSection,
-  SubmitButton,
+  Button,
 } from './style'
 import { ErrorSpan } from '../ErrorSpan'
-import { FormSelect } from '../FormSelect'
+import FormSelect from '../FormSelect'
 export const Form: React.FC = () => {
   const handleSubmit = () => {}
   return (
@@ -38,17 +38,13 @@ export const Form: React.FC = () => {
           </FormContent>
           <FormContent>
             <FormContentSection>
-              <FormLabel>User</FormLabel>
+              <FormLabel>Github User</FormLabel>
               <FormSelect name="user" />
             </FormContentSection>
             <FormContentSection></FormContentSection>
           </FormContent>
           <ButtonContainer>
-            <SubmitButton
-              type="submit"
-              value="Continue"
-              onClick={handleSubmit}
-            />
+            <Button type="submit" value="Continue" onClick={handleSubmit} />
           </ButtonContainer>
         </form>
       </CardContent>

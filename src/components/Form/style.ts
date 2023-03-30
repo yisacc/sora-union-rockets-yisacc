@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-
-
 export const Card = styled.div`
   box-shadow: 0 3px 5px rgba(25, 30, 62, 0.02);
   border-radius: 10px;
@@ -11,6 +9,7 @@ export const Card = styled.div`
   color: #666;
   position: relative;
 `
+
 export const CardContent = styled.div`
   padding: 30px;
   color: #7e7d8f;
@@ -18,28 +17,24 @@ export const CardContent = styled.div`
   overflow: auto;
   margin-top: 20px;
 `
+
 export const FormContent = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
 `
+
 export const FormContentSection = styled.div`
   width: 100%;
   margin-right: 50px;
 `
 
-export const ButtonContainer = styled.div`
-  margin-top: 20px;
-  flex: 0 0 16.666667%;
-  max-width: 16.666667%;
-`
-export const SubmitButton = styled.input`
+export const Button = styled.input`
   cursor: pointer;
   color: #fff;
   background-color: #fe3f40;
   border-radius: 30px;
-  margin: 0;
-  margin-bottom: 10px;
+  margin-top: 20px;
   text-transform: uppercase;
   word-wrap: break-word;
   white-space: normal;
@@ -49,9 +44,14 @@ export const SubmitButton = styled.input`
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   padding: 0.84rem 2.14rem;
   font-size: 0.81rem;
-  display: inline-block;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
   line-height: 1.5;
+`
+
+export const ButtonContainer = styled.div`
+  margin-top: 20px;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
 `

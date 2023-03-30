@@ -13,7 +13,7 @@ import {
 } from './style'
 import { FaEdit, FaRocket, FaTrashAlt } from 'react-icons/fa'
 
-export const Rockets: React.FC<{}> = () => {
+export const RocketReviewList: React.FC<{}> = () => {
   return (
     <Wrapper>
       <Container>

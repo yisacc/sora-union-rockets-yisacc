@@ -14,7 +14,7 @@ export const Header = () => {
         <HeaderTitleSection>
           <HeaderTitle>
             Sora Union
-            <span>-Rockets List</span>
+            <span>-rockets reviews</span>
           </HeaderTitle>
         </HeaderTitleSection>
         <AddRocketButtonSection>
@@ -27,7 +27,7 @@ export const Header = () => {
                   textAlign: 'center',
                 }}
               />
-              <span style={{ textAlign: 'center' }}>Add Rocket</span>
+              <span style={{ textAlign: 'center' }}>Add Review</span>
             </SubmitButton>
           </ButtonContainer>
         </AddRocketButtonSection>
