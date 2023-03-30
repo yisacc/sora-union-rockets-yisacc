@@ -10,21 +10,22 @@ import {
   CardBreak,
 } from './style'
 import { FaEdit, FaRocket, FaTrashAlt } from 'react-icons/fa'
+import { IRocketReviewCardProps } from './types'
 
-export const RocketReviewCard: React.FC<{}> = () => {
+export const RocketReviewCard: React.FC<IRocketReviewCardProps> = ({
+  rocket,
+}) => {
+  const { title, rocketName, description, userData } = rocket
   return (
     <Card>
       <CardImgWrapper>
-        <CardImg
-          src="http://localhost:3001/static/media/754992997646380942305.7c94b6fa.jpg"
-          alt="test"
-        ></CardImg>
+        <CardImg src={userData?.avatar_url} alt="test"></CardImg>
       </CardImgWrapper>
       <div>
         <CardContentHeader>
           <div style={{ display: 'flex' }}>
             <CardTitleContainer>
-              <CardTitle>Test</CardTitle>
+              <CardTitle>{title}</CardTitle>
             </CardTitleContainer>
             <RocketNameContainer>
               <FaRocket
@@ -36,7 +37,7 @@ export const RocketReviewCard: React.FC<{}> = () => {
                   color: '#03a4ed',
                 }}
               />
-              <strong>test rocket</strong>
+              <strong>{rocketName}</strong>
             </RocketNameContainer>
             <UpdateRocket>
               <FaEdit />
@@ -45,12 +46,7 @@ export const RocketReviewCard: React.FC<{}> = () => {
           </div>
           <CardBreak></CardBreak>
         </CardContentHeader>
-        <div>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda
-          omnis accusantium rem cupiditate debitis praesentium ad ipsum quia
-          ullam veniam est velit nobis facere, obcaecati possimus eius, eos
-          doloremque quibusdam.
-        </div>
+        <div>{description}</div>
       </div>
     </Card>
   )

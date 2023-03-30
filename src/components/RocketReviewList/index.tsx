@@ -10,7 +10,9 @@ export const RocketReviewList: React.FC<{}> = () => {
     <Wrapper>
       <Container>
         {rockets?.length ? (
-          <RocketReviewCard />
+          rockets.map((rocket) => (
+            <RocketReviewCard key={rocket.id} rocket={rocket} />
+          ))
         ) : (
           <ErrorModule>
             <ErrorIcon>
