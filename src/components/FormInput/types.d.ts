@@ -1,2 +1,3 @@
-export interface IFormInputProps
-  extends React.ComponentPropsWithoutRef<'input'> {}
+export interface IFormInputProps extends React.ComponentPropsWithoutRef<'input'> {
+  onFieldChange: (fieldName: string, value: string) => void
+}

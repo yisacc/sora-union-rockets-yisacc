@@ -1,6 +1,6 @@
 import { IUser } from './response'
 export interface IRocket {
-  id: number
+  id?: number
   title: string
   rocketName: string
   description: string

@@ -1,24 +1,24 @@
 import { action, createStore } from "easy-peasy";
-import { IUsersModel } from "./types";
+import { IRocketsModel } from './types'
 
-export const store = createStore<IUsersModel>({
-  users: [],
+export const store = createStore<IRocketsModel>({
+  rockets: [],
 
-  addUser: action((state, payload) => {
-    state.users.push(payload);
+  addRocket: action((state, payload) => {
+    state.rockets.push(payload)
   }),
 
-  deleteUser: action((state, payload) => {
-    state.users = state.users.filter((user) => user.id !== payload);
+  removeRocket: action((state, payload) => {
+    state.rockets = state.rockets.filter((rocket) => rocket.id !== payload)
   }),
 
-  updateUser: action((state, payload) => {
-    const { id, newRocket } = payload;
-    state.users = state.users.map((existingUser) => {
-      if (existingUser.id === id) {
-        return { ...existingUser, ...newRocket };
+  updateRocket: action((state, payload) => {
+    const { id, newRocket } = payload
+    state.rockets = state.rockets.map((existingRocket) => {
+      if (existingRocket.id === id) {
+        return { ...existingRocket, ...newRocket }
       }
-      return existingUser;
-    });
+      return existingRocket
+    })
   }),
-});
+})

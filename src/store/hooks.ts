@@ -1,7 +1,7 @@
 import { createTypedHooks } from 'easy-peasy'
-import { IUsersModel } from './types'
+import { IRocketsModel } from './types'
 
-const typedHooks = createTypedHooks<IUsersModel>()
+const typedHooks = createTypedHooks<IRocketsModel>()
 
 export const useStoreActions = typedHooks.useStoreActions
 export const useStoreDispatch = typedHooks.useStoreDispatch
