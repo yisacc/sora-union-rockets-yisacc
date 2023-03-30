@@ -14,8 +14,18 @@ const TextArea = styled.textarea`
   outline: 0;
 `
 
-const FormTextArea: React.FC<IFormTextareaProps> = ({ ...rest }) => {
-  return <TextArea {...rest} />
+const FormTextArea: React.FC<IFormTextareaProps> = ({
+  onFieldChange,
+  name,
+  ...rest
+}) => {
+  return (
+    <TextArea
+      name={name}
+      onChange={(e) => onFieldChange(name, e.target.value)}
+      {...rest}
+    />
+  )
 }
 
 export default FormTextArea

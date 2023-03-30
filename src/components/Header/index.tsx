@@ -7,7 +7,11 @@ import {
   ButtonContainer,
   SubmitButton,
 } from './style'
-export const Header = () => {
+import { IHeaderProps } from './types'
+export const Header: React.FC<IHeaderProps> = ({
+  handleShowAddForm,
+  ...rest
+}) => {
   return (
     <>
       <Wrapper>
@@ -20,7 +24,7 @@ export const Header = () => {
         <AddRocketButtonSection>
           {' '}
           <ButtonContainer>
-            <SubmitButton type="submit">
+            <SubmitButton type="submit" onClick={handleShowAddForm}>
               <FaPlusCircle
                 size={20}
                 style={{

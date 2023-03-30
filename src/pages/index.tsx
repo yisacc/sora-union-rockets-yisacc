@@ -7,6 +7,9 @@ import { useState } from 'react'
 
 export default function Home() {
   const [showAddForm, setShowAddForm] = useState(false)
+  const handleShowAddForm = () => {
+    setShowAddForm(!showAddForm)
+  }
   return (
     <>
       <Head>
@@ -17,8 +20,8 @@ export default function Home() {
       </Head>
       <RootLayout>
         <PageWrapper>
-          <Header />
-          {showAddForm === false ? <RocketReviewForm /> : <RocketReviewList />}
+          <Header handleShowAddForm={handleShowAddForm} />
+          {showAddForm ? <RocketReviewForm /> : <RocketReviewList />}
         </PageWrapper>
       </RootLayout>
     </>

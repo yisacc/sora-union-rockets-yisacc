@@ -13,15 +13,18 @@ import {
   CardTitle,
 } from './style'
 import { IRocket } from '@/models/rocket'
+import { IUser } from '@/models/response'
+import { useStoreActions } from '@/store/hooks'
 
 const formSchema = yup.object().shape({
   title: yup.string().required(),
   rocketName: yup.string().required(),
   description: yup.string().required(),
-  user: yup.string().required(),
+  userData: yup.object().required(),
 })
 
-export const RocketReviewForm = () => {
+export const RocketReviewForm: React.FC = () => {
+  const { addRocket, updateRocket } = useStoreActions((actions) => actions)
   const [values, setValues] = useState<IRocket>({
     title: '',
     rocketName: '',
@@ -36,16 +39,18 @@ export const RocketReviewForm = () => {
     userData: false,
   })
 
-  const onFieldChange = useCallback((fieldName: string, value: string) => {
-    setValues((prevValues) =>
-      update(prevValues, {
-        [fieldName]: {
-          $set: value,
-        },
-      })
-    )
-  }, [])
-
+  const onFieldChange = useCallback(
+    (fieldName: string, value: string | IUser) => {
+      setValues((prevValues) =>
+        update(prevValues, {
+          [fieldName]: {
+            $set: value,
+          },
+        })
+      )
+    },
+    []
+  )
   const onSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -53,7 +58,7 @@ export const RocketReviewForm = () => {
         abortEarly: false,
       })
       if (isFormValid) {
-        console.log('Form is legit')
+        addRocket({ ...values, id: new Date().getTime() })
       } else {
         formSchema.validate(values, { abortEarly: false }).catch((err) => {
           const errors = err.inner.reduce(

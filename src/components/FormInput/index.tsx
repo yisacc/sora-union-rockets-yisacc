@@ -15,8 +15,17 @@ export const Input = styled.input`
   color: #4a4a4a;
   outline: 0;
 `
-const FormInput: React.FC<IFormInputProps> = ({ ...rest }) => {
-  return <Input {...rest}></Input>
+const FormInput: React.FC<IFormInputProps> = ({
+  onFieldChange,
+  name,
+  ...rest
+}) => {
+  return (
+    <Input
+      {...rest}
+      onChange={(e) => onFieldChange(name, e.target.value)}
+    ></Input>
+  )
 }
 
 export default FormInput

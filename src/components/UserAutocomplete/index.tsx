@@ -22,8 +22,16 @@ const Input = styled(Select)`
     }
   }
 `
+interface Option {
+  value: number
+  label: string
+}
 
-const UserAutocomplete: React.FC<IUserAutocomplete> = ({ ...rest }) => {
+const UserAutocomplete: React.FC<IUserAutocomplete> = ({
+  onFieldChange,
+  name,
+  ...rest
+}) => {
   const [query, setQuery] = useState('')
   const [currentQuery, setCurrentQuery] = useState('')
   const [users, setUsers] = useState<IUser[]>([])
@@ -53,12 +61,7 @@ const UserAutocomplete: React.FC<IUserAutocomplete> = ({ ...rest }) => {
           }))
           setOptions(transformedOptions)
         }
-        {
-          setUsers([])
-        }
       })
-    } else {
-      setUsers([])
     }
   }, [query])
 
@@ -66,16 +69,26 @@ const UserAutocomplete: React.FC<IUserAutocomplete> = ({ ...rest }) => {
     setCurrentQuery(value)
   }
 
+  const handleOnChange = (value: SingleValue<unknown>) => {
+    setSelectedOption(value)
+    const selectedUser = users.filter(
+      (user) =>
+        user.login === (value as Option).label &&
+        user.id === (value as Option).value
+    )
+    onFieldChange(name, selectedUser[0] as IUser)
+  }
   return (
     <>
       <Input
         value={selectedOption}
         options={options}
         onInputChange={handleInputChange}
-        onChange={setSelectedOption}
+        onChange={handleOnChange}
         placeholder="Search for an option..."
         isClearable
         isSearchable
+        name={name}
       />
     </>
   )

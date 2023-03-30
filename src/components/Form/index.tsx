@@ -43,14 +43,14 @@ export const Form: React.FC<IFormProps> = ({
             <FormContentSection>
               <FormLabel>Description</FormLabel>
               <FormTextArea name="description" onFieldChange={onFieldChange} />
-              <ErrorSpan errorString={errors.title ? errorMessage : ''} />
+              <ErrorSpan errorString={errors.description ? errorMessage : ''} />
             </FormContentSection>
           </FormContent>
           <FormContent>
             <FormContentSection>
               <FormLabel>Github User</FormLabel>
-              <FormSelect name="user" onFieldChange={onFieldChange} />
-              <ErrorSpan errorString={errors.title ? errorMessage : ''} />
+              <FormSelect name="userData" onFieldChange={onFieldChange} />
+              <ErrorSpan errorString={errors.userData ? errorMessage : ''} />
             </FormContentSection>
             <FormContentSection></FormContentSection>
           </FormContent>
