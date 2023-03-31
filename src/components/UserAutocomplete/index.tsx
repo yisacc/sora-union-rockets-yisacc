@@ -30,6 +30,8 @@ interface Option {
 const UserAutocomplete: React.FC<IUserAutocomplete> = ({
   onFieldChange,
   name,
+  value,
+  id,
   ...rest
 }) => {
   const [query, setQuery] = useState('')
@@ -38,6 +40,16 @@ const UserAutocomplete: React.FC<IUserAutocomplete> = ({
   const [options, setOptions] = useState([])
   const [selectedOption, setSelectedOption] =
     useState<SingleValue<unknown>>(null)
+  useEffect(() => {
+    if (value) {
+      setSelectedOption({
+        value: id,
+        label: value,
+      })
+    } else {
+      setSelectedOption(null)
+    }
+  }, [value])
 
   const setQueryStringDebounce = useCallback(
     debounce((currentQueryString: string) => {

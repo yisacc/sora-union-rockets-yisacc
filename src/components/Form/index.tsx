@@ -62,6 +62,7 @@ export const Form: React.FC<IFormProps> = ({
                 name="userData"
                 onFieldChange={onFieldChange}
                 value={values.userData?.login}
+                id={values.userData?.id}
               />
               <ErrorSpan errorString={errors.userData ? errorMessage : ''} />
             </FormContentSection>

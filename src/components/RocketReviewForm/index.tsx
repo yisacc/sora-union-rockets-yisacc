@@ -61,6 +61,12 @@ export const RocketReviewForm: React.FC<IRocketReviewFormProps> = ({
       if (isFormValid) {
         if (mode === 'add') {
           addRocket({ ...values, id: new Date().getTime() })
+          setValues({
+            title: '',
+            rocketName: '',
+            description: '',
+            userData: null,
+          })
         } else {
           updateRocket({
             id: values.id!,
