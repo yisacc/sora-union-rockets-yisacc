@@ -14,14 +14,15 @@ import { IRocketReviewCardProps } from './types'
 
 export const RocketReviewCard: React.FC<IRocketReviewCardProps> = ({
   rocket,
+  handleDeleteClick,
 }) => {
-  const { title, rocketName, description, userData } = rocket
+  const { title, rocketName, description, userData, id } = rocket
   return (
     <Card>
       <CardImgWrapper>
         <CardImg src={userData?.avatar_url} alt="test"></CardImg>
       </CardImgWrapper>
-      <div>
+      <div style={{ width: '75%' }}>
         <CardContentHeader>
           <div style={{ display: 'flex' }}>
             <CardTitleContainer>
@@ -41,7 +42,10 @@ export const RocketReviewCard: React.FC<IRocketReviewCardProps> = ({
             </RocketNameContainer>
             <UpdateRocket>
               <FaEdit />
-              <FaTrashAlt style={{ color: '#fe3f40' }} />
+              <FaTrashAlt
+                style={{ color: '#fe3f40' }}
+                onClick={() => handleDeleteClick(id!)}
+              />
             </UpdateRocket>
           </div>
           <CardBreak></CardBreak>

@@ -1,4 +1,4 @@
-import { FaPlusCircle } from 'react-icons/fa'
+import { FaPlusCircle, FaTimes } from 'react-icons/fa'
 import {
   Wrapper,
   HeaderTitleSection,
@@ -8,10 +8,7 @@ import {
   SubmitButton,
 } from './style'
 import { IHeaderProps } from './types'
-export const Header: React.FC<IHeaderProps> = ({
-  handleShowAddForm,
-  ...rest
-}) => {
+export const Header: React.FC<IHeaderProps> = ({ handleShowAddForm, showAddForm }) => {
   return (
     <>
       <Wrapper>
@@ -25,13 +22,27 @@ export const Header: React.FC<IHeaderProps> = ({
           {' '}
           <ButtonContainer>
             <SubmitButton type="submit" onClick={handleShowAddForm}>
-              <FaPlusCircle
-                size={20}
-                style={{
-                  textAlign: 'center',
-                }}
-              />
-              <span style={{ textAlign: 'center' }}>Add Review</span>
+              {showAddForm ? (
+                <>
+                  <FaTimes
+                    size={20}
+                    style={{
+                      textAlign: 'center',
+                    }}
+                  />
+                  <span style={{ textAlign: 'center' }}>Cancel</span>
+                </>
+              ) : (
+                <>
+                  <FaPlusCircle
+                    size={20}
+                    style={{
+                      textAlign: 'center',
+                    }}
+                  />
+                  <span style={{ textAlign: 'center' }}>Add Review</span>
+                </>
+              )}
             </SubmitButton>
           </ButtonContainer>
         </AddRocketButtonSection>

@@ -15,6 +15,7 @@ import {
 import { IRocket } from '@/models/rocket'
 import { IUser } from '@/models/response'
 import { useStoreActions } from '@/store/hooks'
+import { IRocketReviewFormProps } from './types'
 
 const formSchema = yup.object().shape({
   title: yup.string().required(),
@@ -23,7 +24,9 @@ const formSchema = yup.object().shape({
   userData: yup.object().required(),
 })
 
-export const RocketReviewForm: React.FC = () => {
+export const RocketReviewForm: React.FC<IRocketReviewFormProps> = ({
+  handleShowAddForm,
+}) => {
   const { addRocket, updateRocket } = useStoreActions((actions) => actions)
   const [values, setValues] = useState<IRocket>({
     title: '',
@@ -59,6 +62,7 @@ export const RocketReviewForm: React.FC = () => {
       })
       if (isFormValid) {
         addRocket({ ...values, id: new Date().getTime() })
+        handleShowAddForm()
       } else {
         formSchema.validate(values, { abortEarly: false }).catch((err) => {
           const errors = err.inner.reduce(
