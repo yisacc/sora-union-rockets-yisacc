@@ -4,8 +4,11 @@ import { useStoreActions, useStoreState } from '@/store/hooks'
 import { FaRocket } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import ConfirmDeleteRocketReview from '../ConfirmDeleteRocketReview'
+import { IRocketReviewListProps } from './types'
 
-export const RocketReviewList: React.FC<{}> = () => {
+export const RocketReviewList: React.FC<IRocketReviewListProps> = ({
+  editRocket,
+}) => {
   const { rockets } = useStoreState((state) => state)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const { removeRocket } = useStoreActions((actions) => actions)
@@ -42,6 +45,7 @@ export const RocketReviewList: React.FC<{}> = () => {
               key={rocket.id}
               rocket={rocket}
               handleDeleteClick={handleDeleteClick}
+              editRocket={editRocket}
             />
           ))
         ) : (

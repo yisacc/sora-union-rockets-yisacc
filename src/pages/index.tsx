@@ -8,15 +8,21 @@ import { IRocket } from '@/models/rocket'
 
 export default function Home() {
   const [showAddForm, setShowAddForm] = useState(false)
-  const [isAddFormShown, setIsAddFormShown] = useState<boolean>(false)
   const [mode, setMode] = useState<'add' | 'edit'>('add')
+  const [values, setValues] = useState<IRocket>({
+    title: '',
+    rocketName: '',
+    description: '',
+    userData: null,
+  })
   const handleShowAddForm = () => {
     setShowAddForm(!showAddForm)
+    setMode('add')
   }
   const editRocket = (formData: IRocket) => {
-    setIsAddFormShown(true)
+    setShowAddForm(true)
     setMode('edit')
-    setFormData(formData)
+    setValues(formData)
   }
   return (
     <>
@@ -33,9 +39,14 @@ export default function Home() {
             showAddForm={showAddForm}
           />
           {showAddForm ? (
-            <RocketReviewForm handleShowAddForm={handleShowAddForm} />
+            <RocketReviewForm
+              values={values}
+              setValues={setValues}
+              handleShowAddForm={handleShowAddForm}
+              mode={mode}
+            />
           ) : (
-            <RocketReviewList />
+            <RocketReviewList editRocket={editRocket} />
           )}
         </PageWrapper>
       </RootLayout>

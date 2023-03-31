@@ -15,6 +15,7 @@ import { IRocketReviewCardProps } from './types'
 export const RocketReviewCard: React.FC<IRocketReviewCardProps> = ({
   rocket,
   handleDeleteClick,
+  editRocket,
 }) => {
   const { title, rocketName, description, userData, id } = rocket
   return (
@@ -41,7 +42,7 @@ export const RocketReviewCard: React.FC<IRocketReviewCardProps> = ({
               <strong>{rocketName}</strong>
             </RocketNameContainer>
             <UpdateRocket>
-              <FaEdit />
+              <FaEdit onClick={() => editRocket(rocket)} />
               <FaTrashAlt
                 style={{ color: '#fe3f40' }}
                 onClick={() => handleDeleteClick(id!)}

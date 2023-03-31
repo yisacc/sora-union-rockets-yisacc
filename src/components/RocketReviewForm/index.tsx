@@ -26,14 +26,12 @@ const formSchema = yup.object().shape({
 
 export const RocketReviewForm: React.FC<IRocketReviewFormProps> = ({
   handleShowAddForm,
+  setValues,
+  values,
+  mode,
 }) => {
   const { addRocket, updateRocket } = useStoreActions((actions) => actions)
-  const [values, setValues] = useState<IRocket>({
-    title: '',
-    rocketName: '',
-    description: '',
-    userData: null,
-  })
+
   const [errors, setErrors] = useState<Record<keyof IRocket, boolean>>({
     id: false,
     title: false,
@@ -44,7 +42,7 @@ export const RocketReviewForm: React.FC<IRocketReviewFormProps> = ({
 
   const onFieldChange = useCallback(
     (fieldName: string, value: string | IUser) => {
-      setValues((prevValues) =>
+      setValues((prevValues: IRocket) =>
         update(prevValues, {
           [fieldName]: {
             $set: value,
@@ -61,7 +59,14 @@ export const RocketReviewForm: React.FC<IRocketReviewFormProps> = ({
         abortEarly: false,
       })
       if (isFormValid) {
-        addRocket({ ...values, id: new Date().getTime() })
+        if (mode === 'add') {
+          addRocket({ ...values, id: new Date().getTime() })
+        } else {
+          updateRocket({
+            id: values.id!,
+            newRocket: values,
+          })
+        }
         handleShowAddForm()
       } else {
         formSchema.validate(values, { abortEarly: false }).catch((err) => {
