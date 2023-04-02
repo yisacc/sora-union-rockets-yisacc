@@ -3,9 +3,9 @@ import Select, { SingleValue } from 'react-select'
 import { IUserAutocomplete } from './types'
 import { debounce, requestItems } from '@/utils'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { IUser } from '@/models/response'
+import { IUser } from '@/models/userListApiResponse'
 
-const Input = styled(Select)`
+const StyledSelect = styled(Select)`
   .select__control {
     display: block;
     width: 100%;
@@ -49,7 +49,7 @@ const UserAutocomplete: React.FC<IUserAutocomplete> = ({
     } else {
       setSelectedOption(null)
     }
-  }, [value])
+  }, [value, id])
 
   const setQueryStringDebounce = useCallback(
     debounce((currentQueryString: string) => {
@@ -63,18 +63,21 @@ const UserAutocomplete: React.FC<IUserAutocomplete> = ({
   }, [currentQuery, setQueryStringDebounce])
 
   useEffect(() => {
-    if (query) {
-      requestItems('GET /search/users', { q: query }).then((users) => {
-        if (users?.items) {
-          setUsers(users.items)
-          const transformedOptions = users.items.map((option: IUser) => ({
-            value: option.id,
-            label: option.login,
-          }))
-          setOptions(transformedOptions)
-        }
-      })
+    const fetchUsers = async () => {
+      if (query) {
+        requestItems('GET /search/users', { q: query }).then((users) => {
+          if (users?.items) {
+            const transformedOptions = users.items.map((option: IUser) => ({
+              value: option.id,
+              label: option.login,
+            }))
+            setUsers(users.items)
+            setOptions(transformedOptions)
+          }
+        })
+      }
     }
+    fetchUsers()
   }, [query])
 
   const handleInputChange = (value: string) => {
@@ -83,16 +86,18 @@ const UserAutocomplete: React.FC<IUserAutocomplete> = ({
 
   const handleOnChange = (value: SingleValue<unknown>) => {
     setSelectedOption(value)
-    const selectedUser = users.filter(
+    const selectedUser = users.find(
       (user) =>
-        user.login === (value as Option).label &&
-        user.id === (value as Option).value
+        user.login === (value as Option)?.label &&
+        user.id === (value as Option)?.value
     )
-    onFieldChange(name, selectedUser[0] as IUser)
+    if (selectedUser) {
+      onFieldChange(name, selectedUser)
+    }
   }
   return (
     <>
-      <Input
+      <StyledSelect
         value={selectedOption}
         options={options}
         onInputChange={handleInputChange}

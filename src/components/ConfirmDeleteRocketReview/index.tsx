@@ -32,8 +32,16 @@ const ConfirmDeleteRocketReview: React.FC<IConfirmDeleteRocketReviewProps> = ({
   onConfirm,
   id,
 }) => {
-  return isOpen ? (
-    <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
+
+  const handleClose = () => {
+    onClose?.()
+  }
+
+  const handleConfirm = () => {
+    onConfirm?.(id)
+  }
+  return (
+    <Modal isOpen={isOpen} onRequestClose={handleClose} style={customStyles}>
       <div>
         <Content>
           <Header>
@@ -48,7 +56,7 @@ const ConfirmDeleteRocketReview: React.FC<IConfirmDeleteRocketReviewProps> = ({
               />
             </IconBox>
             <Title>Are you sure?</Title>
-            <CloseModal onClick={onClose}>&times;</CloseModal>
+            <CloseModal onClick={handleClose}>&times;</CloseModal>
           </Header>
           <ModalBody>
             <p>
@@ -57,17 +65,23 @@ const ConfirmDeleteRocketReview: React.FC<IConfirmDeleteRocketReviewProps> = ({
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button style={{ backgroundColor: '#c1c1c1' }} onClick={onClose}>
+            <Button
+              style={{ backgroundColor: '#c1c1c1' }}
+              onClick={handleClose}
+            >
               Cancel
             </Button>
-            <Button style={{ backgroundColor: '#f15e5e' }} onClick={()=>onConfirm(id)}>
+            <Button
+              style={{ backgroundColor: '#f15e5e' }}
+              onClick={handleConfirm}
+            >
               Delete
             </Button>
           </ModalFooter>
         </Content>
       </div>
     </Modal>
-  ) : null
+  ) 
 }
 
 export default ConfirmDeleteRocketReview

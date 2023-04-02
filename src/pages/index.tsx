@@ -1,22 +1,22 @@
-
-import { Header } from '@/components'
 import RootLayout from '@/layout'
-import { PageWrapper, RocketReviewList, RocketReviewForm } from '@/components'
+import {
+  PageWrapper,
+  RocketReviewList,
+  RocketReviewForm,
+  Header,
+  initialValues,
+} from '@/components'
 import Head from 'next/head'
 import { useState } from 'react'
-import { IRocket } from '@/models/rocket'
+import { IRocket } from '@/models/rocketForm'
 
 export default function Home() {
   const [showAddForm, setShowAddForm] = useState(false)
   const [mode, setMode] = useState<'add' | 'edit'>('add')
-  const [values, setValues] = useState<IRocket>({
-    title: '',
-    rocketName: '',
-    description: '',
-    userData: null,
-  })
+  const [values, setValues] = useState<IRocket>(initialValues)
   const handleShowAddForm = () => {
-    setShowAddForm(!showAddForm)
+    setValues(initialValues)
+    setShowAddForm((prevShowAddForm) => !prevShowAddForm)
     setMode('add')
   }
   const editRocket = (formData: IRocket) => {

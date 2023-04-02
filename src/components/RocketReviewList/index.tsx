@@ -1,6 +1,6 @@
 import { Wrapper, Container, ErrorModule, ErrorMsg, ErrorIcon } from './style'
 import { RocketReviewCard } from '../RocketReviewCard'
-import { useStoreActions, useStoreState } from '@/store/hooks'
+import { useStoreActions, useStoreState } from '@/store/typedStoreHooks'
 import { FaRocket } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import ConfirmDeleteRocketReview from '../ConfirmDeleteRocketReview'

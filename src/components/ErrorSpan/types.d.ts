@@ -1,4 +1,3 @@
-export interface IErrorSpanProps
-  extends React.ComponentPropsWithoutRef<'label'> {
+export interface IErrorSpanProps {
   errorString: string
 }

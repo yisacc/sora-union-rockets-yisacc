@@ -1,4 +1,4 @@
-import { IRocket } from '@/models/rocket'
+import { IRocket } from '@/models/rocketForm'
 
 export interface IRocketReviewCardProps {
   rocket: IRocket

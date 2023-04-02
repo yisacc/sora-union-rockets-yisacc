@@ -1,4 +1,4 @@
-import { IUser } from './response'
+import { IUser } from './userListApiResponse'
 export interface IRocket {
   id?: number
   title: string

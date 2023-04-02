@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect, useState } from "react";
 import { ThemeProvider as OriginalThemeProvider } from 'styled-components';
 import { lightTheme } from "@/styles/theme/theme";
 

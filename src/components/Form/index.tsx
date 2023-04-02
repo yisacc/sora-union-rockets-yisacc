@@ -11,7 +11,22 @@ import {
 } from './style'
 import { ErrorSpan } from '../ErrorSpan'
 import FormSelect from '../UserAutocomplete'
-import { IFormProps } from './types'
+import { IFormProps, IFormSectionProps } from './types'
+
+const errorMessage = 'This Field is Required.'
+
+const FormSection: React.FC<IFormSectionProps> = ({
+  label,
+  error,
+  children,
+}) => (
+  <FormContentSection>
+    <FormLabel>{label}</FormLabel>
+    {children}
+    <ErrorSpan errorString={error ? errorMessage : ''} />
+  </FormContentSection>
+)
+
 export const Form: React.FC<IFormProps> = ({
   values,
   errors,
@@ -25,47 +40,39 @@ export const Form: React.FC<IFormProps> = ({
       <CardContent>
         <form onSubmit={onSubmit} id="signupform">
           <FormContent>
-            <FormContentSection>
-              <FormLabel>Title</FormLabel>
+            <FormSection label="Title" error={errors.title}>
               <FormInput
                 name="title"
-                onFieldChange={onFieldChange}
                 value={values.title}
-              ></FormInput>
-              <ErrorSpan errorString={errors.title ? errorMessage : ''} />
-            </FormContentSection>
-            <FormContentSection>
-              <FormLabel>Rocket Name</FormLabel>
+                onFieldChange={onFieldChange}
+              />
+            </FormSection>
+            <FormSection label="Rocket Name" error={errors.rocketName}>
               <FormInput
                 name="rocketName"
-                onFieldChange={onFieldChange}
                 value={values.rocketName}
-              ></FormInput>
-              <ErrorSpan errorString={errors.rocketName ? errorMessage : ''} />
-            </FormContentSection>
+                onFieldChange={onFieldChange}
+              />
+            </FormSection>
           </FormContent>
           <FormContent>
-            <FormContentSection>
-              <FormLabel>Description</FormLabel>
+            <FormSection label="Description" error={errors.description}>
               <FormTextArea
                 name="description"
-                onFieldChange={onFieldChange}
                 value={values.description}
+                onFieldChange={onFieldChange}
               />
-              <ErrorSpan errorString={errors.description ? errorMessage : ''} />
-            </FormContentSection>
+            </FormSection>
           </FormContent>
           <FormContent>
-            <FormContentSection>
-              <FormLabel>Github User</FormLabel>
+            <FormSection label="Github User" error={errors.userData}>
               <FormSelect
                 name="userData"
-                onFieldChange={onFieldChange}
                 value={values.userData?.login}
-                id={values.userData?.id}
+                id={values.userData?.id!}
+                onFieldChange={onFieldChange}
               />
-              <ErrorSpan errorString={errors.userData ? errorMessage : ''} />
-            </FormContentSection>
+            </FormSection>
             <FormContentSection></FormContentSection>
           </FormContent>
           <ButtonContainer>
